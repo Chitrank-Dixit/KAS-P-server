@@ -1,0 +1,9 @@
+node_modules
+packer
+terraform
+vagrant
+kind-k8s
+chart
+npm-debug.log
+Dockerfile
+.dockerignore

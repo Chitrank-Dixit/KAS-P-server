@@ -1,0 +1,34 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: one-api-service
+spec:
+  selector:
+    app: one-api
+  ports:
+  - protocol: "TCP"
+    port: 8080
+    targetPort: 8000
+  type: LoadBalancer
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: one-api
+spec:
+  selector:
+    matchLabels:
+      app: one-api
+  replicas: 4
+  template:
+    metadata:
+      labels:
+        app: one-api
+    spec:
+      containers:
+      - name: one-api
+        image: one-api:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8000

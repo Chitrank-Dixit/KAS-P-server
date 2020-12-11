@@ -1,0 +1,42 @@
+{
+  "name": "server",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "npx concurrently \"npm run build\" \"npm run dev:run\"",
+    "dev:watch": "npm run dev:run",
+    "dev:run": "npx nodemon --ext js,mjs,json,pug ./bin/www",
+    "start": "npx nodemon --ext js,mjs,json,pug ./bin/www",
+    "test": "npx mocha test",
+    "debug": "npx nodemon --inspect:9229 --ext js,mjs,json,pug ./bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1",
+    "pug": "2.0.0-beta11",
+    "bluebird": "^3.7.2",
+    "chai": "^4.2.0",
+    "compression": "^1.7.4",
+    "concurrently": "^5.3.0",
+    "cors": "^2.8.5",
+    "cuid": "^2.1.8",
+    "dotenv": "^8.2.0",
+    "eslint": "^7.14.0",
+    "jwt-decode": "^3.1.2",
+    "limax": "^2.1.0",
+    "mocha": "^8.2.1",
+    "moment": "^2.29.1",
+    "mongodb": "^3.6.3",
+    "mongoose": "^5.11.4",
+    "nodemon": "^2.0.6",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
+    "sanitize-html": "^2.2.0",
+    "winston": "^3.3.3",
+    "winston-daily-rotate-file": "^4.5.0"
+  }
+}

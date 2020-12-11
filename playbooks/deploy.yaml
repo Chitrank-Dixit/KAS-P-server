@@ -1,0 +1,13 @@
+---
+
+- name: "Deploy to Server"
+  hosts: all
+  
+  tasks:
+    - name: task 1
+      debug:
+        msg: "task 1"
+
+    - name: task 2
+      debug:
+        msg: "task 2"

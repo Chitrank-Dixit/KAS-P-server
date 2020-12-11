@@ -1,0 +1,44 @@
+version: '3.4'
+services:
+  debug-server:
+    image: debug-server
+    build: .
+    environment:
+      NODE_ENV: production
+      PORT: 8000
+      MONGO_URL: mongo
+    links:
+      - mongo
+    ports:
+      - 8000:8000
+      - 9229:9229
+    command: 
+      - node
+      - "--inspect=0.0.0.0:9229"
+      - "./bin/www"
+    volumes:
+      - .:/usr/src/app
+      - node_modules:/usr/src/app/node_modules
+    networks:
+      - dev
+
+  mongo:
+    container_name: mongo
+    image: mongo
+    volumes:
+      - mongo_data:/data/db
+    ports:
+      - "27017:27017"
+    restart: on-failure
+    networks:
+      - dev
+
+volumes:
+  mongo_data:
+  node_modules:
+
+networks:
+  dev:
+    driver: bridge
+    driver_opts:
+      com.docker.network.driver.mtu: 1400
