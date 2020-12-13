@@ -1,5 +1,8 @@
 pipeline {
-   agent { dockerfile true }
+   agent { 
+     label 'docker'
+     dockerfile true
+   }
    environment {
        registry = "https://hub.docker.com/r/chitrankdixit/KAS-P-server"
        dockerImage = "chitrankdixit/KAS-P-server"
