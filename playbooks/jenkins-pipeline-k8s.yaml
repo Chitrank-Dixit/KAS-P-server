@@ -1,0 +1,11 @@
+helm search hub jenkins
+helm repo add jenkins https://charts.jenkins.io
+helm repo update
+helm search repo jenkins
+helm inspect values jenkins/jenkins > /tmp/jenkins.value
+
+vim /tmp/jenkins.value
+and edit by uncommenting 'adminPassword: "admin" '
+serviceType: NodePort
+nodePort: 32323
+

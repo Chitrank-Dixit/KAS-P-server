@@ -1,13 +1,13 @@
 pipeline {
    agent { dockerfile true }
    environment {
-       registry = "192.168.1.81:5000/chitrankdixit/sargam-api"
-       dockerImage = "chitrankdixit/sargam-api"
+       registry = "https://hub.docker.com/r/chitrankdixit/KAS-P-server"
+       dockerImage = "chitrankdixit/KAS-P-server"
    }
    stages {
        stage('Checkout Source') {
         steps {
-          git 'https://github.com/justmeandopensource/playjenkins.git'
+          git 'https://github.com/Chitrank-Dixit/KAS-P-server.git'
         }
       }
        stage('Build') {
@@ -22,7 +22,7 @@ pipeline {
           script {
             docker.withRegistry( "" ) {
               dockerImage.inside() {
-               sh 'npm tests'
+               sh 'npm test'
               }
             }
           }
