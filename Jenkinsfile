@@ -10,7 +10,7 @@ pipeline {
     stage('Build') {
       steps {
         script {
-          dockerImage = docker.build registry + ":$BUILD_NUMBER"
+          dockerImage = docker.build name + ":$BUILD_NUMBER"
         }
 
       }
@@ -52,6 +52,7 @@ pipeline {
   }
   environment {
     registry = 'https://hub.docker.com/r/chitrankdixit/KAS-P-server'
+    name = 'kasp'
     dockerImage = 'chitrankdixit/KAS-P-server'
   }
 }
