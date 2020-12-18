@@ -1,5 +1,10 @@
 pipeline {
-  agent any
+  agent {
+    docker {
+      image 'chitrankdixit/KAS-P-server'
+    }
+
+  }
   stages {
     stage('Checkout Source') {
       steps {
