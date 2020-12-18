@@ -10,7 +10,7 @@ pipeline {
     stage('Build') {
       steps {
         script {
-          dockerImage = docker.build registry + ":$BUILD_NUMBER --privileged"
+          dockerImage = docker.build registry + ":$BUILD_NUMBER" + "--privileged"
         }
 
       }
