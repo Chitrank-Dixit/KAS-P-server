@@ -1,12 +1,10 @@
 pipeline {
-   agent { 
-     label 'docker'
-     dockerfile true
-   }
+   
    environment {
        registry = "https://hub.docker.com/r/chitrankdixit/KAS-P-server"
        dockerImage = "chitrankdixit/KAS-P-server"
    }
+   agent any
    stages {
        stage('Checkout Source') {
         steps {
