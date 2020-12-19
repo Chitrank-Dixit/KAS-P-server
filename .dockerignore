@@ -7,3 +7,4 @@ chart
 npm-debug.log
 Dockerfile
 .dockerignore
+package-lock.json

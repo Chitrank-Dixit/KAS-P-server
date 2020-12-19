@@ -51,8 +51,8 @@ pipeline {
 
   }
   environment {
-    registry = 'https://hub.docker.com/r/chitrankdixit/KAS-P-server'
+    registry = 'https://hub.docker.com/r/chitrankdixit/kasp-p-server'
     name = 'kasp'
-    dockerImage = 'chitrankdixit/KAS-P-server'
+    dockerImage = 'chitrankdixit/kas-p-server'
   }
 }
