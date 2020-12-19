@@ -19,10 +19,8 @@ pipeline {
     stage('Test') {
       steps {
         script {
-          docker.withRegistry( "" ) {
-            dockerImage.inside() {
-              sh 'npm test'
-            }
+          dockerImage.inside() {
+            sh 'npm test'
           }
         }
 

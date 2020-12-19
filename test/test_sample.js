@@ -1,4 +1,5 @@
-const expect = require('chai').expect;
+const chai = require('chai')
+const expect = chai.expect;
 
 describe('Math', function() {
     describe('#abs()', function() {
