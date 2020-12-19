@@ -25,6 +25,7 @@ pipeline {
             }
           }
         }
+
       }
     }
 
@@ -45,6 +46,7 @@ pipeline {
           kubernetesDeploy(configs: "deployment.yaml", kubeconfigId: "myserverconfig")
         }
 
+        kubernetesDeploy(configs: 'deployment.yaml', kubeconfigId: 'myserverconfig')
       }
     }
 
