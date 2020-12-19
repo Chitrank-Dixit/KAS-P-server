@@ -16,12 +16,13 @@ pipeline {
       }
     }
 
-    stage('Test') {
+    stage('Check') {
       steps {
         script {
           docker.withRegistry( "" ) {
             dockerImage.inside() {
-              sh 'npm test'
+                stage("Prepare") { sh 'npm install' }
+                stage("Test") { sh 'npm test' }
             }
           }
         }
@@ -31,7 +32,7 @@ pipeline {
     stage('Publish') {
       steps {
         script {
-          docker.withRegistry( "" ) {
+          docker.withRegistry( 'https://registry.hub.docker.com/', 'dockerhub' ) {
             dockerImage.push()
           }
         }
@@ -50,8 +51,8 @@ pipeline {
 
   }
   environment {
-    registry = 'https://hub.docker.com/r/chitrankdixit/kasp-p-server'
-    name = 'kasp'
+    registry = 'https://registry.hub.docker.com/'
+    name = 'chitrankdixit/kas-p-server'
     dockerImage = 'chitrankdixit/kas-p-server'
   }
 }
