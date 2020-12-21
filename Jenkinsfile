@@ -14,7 +14,7 @@ pipeline {
     stage('Build') {
       steps {
         script {
-          dockerImage = docker.build name + ":$BUILD_NUMBER"
+          dockerImage = docker.build name + ":$BUILD_NUMBER" + " --no-cache"
         }
 
       }
