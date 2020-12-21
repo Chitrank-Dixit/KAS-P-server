@@ -28,7 +28,7 @@ spec:
     spec:
       containers:
       - name: one-api
-        image: one-api:latest
+        image: chitrankdixit/kas-p-server:latest
         imagePullPolicy: Never
         ports:
         - containerPort: 8000
