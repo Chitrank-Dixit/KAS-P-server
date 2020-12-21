@@ -74,3 +74,14 @@ EOF
 
 # deploy using helm charts
 `helm install sarapi chart`
+
+
+for jenkins with docker and jenkins with kubernetes keep jenkins, jenkins-slave and dind containers
+
+jenkins plugins
+blueocean
+kubernetes
+kubernetes cd
+docker
+docker plugin
+docker build step

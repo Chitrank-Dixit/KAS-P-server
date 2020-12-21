@@ -5,6 +5,7 @@ WORKDIR /usr/src/app
 COPY package.json ./
 USER node
 RUN npm install
+RUN npm cache clean --force
 COPY --chown=node:node . .
 EXPOSE 8000
 CMD ["npm", "start"]
