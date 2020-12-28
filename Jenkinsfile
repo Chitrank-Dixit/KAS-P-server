@@ -25,8 +25,17 @@ pipeline {
         script {
           docker.withRegistry( "" ) {
             dockerImage.inside() {
-                stage("Prepare") { sh 'npm install' }
-                stage("Test") { sh 'npm test' }
+              parallel {
+                stage("Unit Tests") {
+                  stage("Prepare") { sh 'npm install' }
+                  stage("Test") { sh 'npm test' }
+                }
+
+                stage("Functional Tests") {
+                  stage("Prepare") { sh 'npm install' }
+                  stage("Test") { sh 'npm test' }
+                }
+              }   
             }
           }
         }
