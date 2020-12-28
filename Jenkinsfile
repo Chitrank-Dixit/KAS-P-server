@@ -21,25 +21,35 @@ pipeline {
     }
 
     stage('Check') {
-      steps {
-        script {
-          docker.withRegistry( "" ) {
-            dockerImage.inside() {
-              parallel {
-                stage("Unit Tests") {
+      parallel {
+        stage('Unit Test') {
+          steps {      
+            script {
+              docker.withRegistry( "" ) {
+                dockerImage.inside() {
                   stage("Prepare") { sh 'npm install' }
-                  stage("Test") { sh 'npm test' }
+                  stage("Test") { sh 'npm test' } 
                 }
-
-                stage("Functional Tests") {
-                  stage("Prepare") { sh 'npm install' }
-                  stage("Test") { sh 'npm test' }
-                }
-              }   
+              }
             }
           }
         }
+
+        stage('Functional Test') {
+          steps {      
+            script {
+              docker.withRegistry( "" ) {
+                dockerImage.inside() {
+                  stage("Prepare") { sh 'npm install' }
+                  stage("Test") { sh 'npm test' }
+                }
+              }
+            }
+          }
+        }
+
       }
+      
     }
 
     stage('Publish') {
@@ -67,5 +77,6 @@ pipeline {
     registry = 'https://registry.hub.docker.com/'
     name = 'chitrankdixit/kas-p-server'
     dockerImage = 'chitrankdixit/kas-p-server'
+    HOME = '.'
   }
 }
